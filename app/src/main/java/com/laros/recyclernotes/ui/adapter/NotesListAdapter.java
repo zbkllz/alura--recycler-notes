@@ -1,35 +1,30 @@
 package com.laros.recyclernotes.ui.adapter;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
 
-import com.laros.recyclernotes.R;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.laros.recyclernotes.model.Note;
 
 import java.util.List;
 
-public class NotesListAdapter extends BaseAdapter {
-    private final List<Note> notes;
-    private final Context context;
+public class NotesListAdapter extends RecyclerView.Adapter {
+    private List<Note> notes;
 
-    public NotesListAdapter(Context context, List<Note> notes) {
-        this.context = context;
+    public NotesListAdapter() {
         this.notes = notes;
     }
 
-
+    @NonNull
     @Override
-    public int getCount() {
-        return notes.size();
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return null;
     }
 
     @Override
-    public Object getItem(int position) {
-        return notes.get(position);
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+
     }
 
     @Override
@@ -38,15 +33,8 @@ public class NotesListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View View, ViewGroup viewGroup) {
-        View createdView = LayoutInflater.from(context).inflate(R.layout.item_note, viewGroup, false);
-        Note note = notes.get(position);
-
-        TextView title = createdView.findViewById(R.id.tv_item_note_title);
-        title.setText(note.getTitle());
-
-        TextView description = createdView.findViewById(R.id.tv_item_note_description);
-        description.setText(note.getDescription());
-        return createdView;
+    public int getItemCount() {
+        return notes.size();
     }
+
 }
