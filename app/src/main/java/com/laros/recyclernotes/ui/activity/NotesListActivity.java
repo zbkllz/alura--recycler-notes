@@ -30,7 +30,15 @@ public class NotesListActivity extends AppCompatActivity {
         });
 
         List<Note> allNotes = templateNotes();
+
+    }
+
+    @Override
+    protected void onResume() {
+        NoteDAO dao = new NoteDAO();
+        List<Note> allNotes = dao.all();
         configRecyclerView(allNotes);
+        super.onResume();
     }
 
     private List<Note> templateNotes() {

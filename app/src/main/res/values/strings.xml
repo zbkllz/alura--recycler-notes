@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">RecyclerNotes</string>
     <string name="insert_note">A coin for your thoughts…</string>
+    <string name="save_note">Save Note</string>
 </resources>
