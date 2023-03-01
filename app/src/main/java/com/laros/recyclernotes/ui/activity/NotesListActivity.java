@@ -1,10 +1,13 @@
 package com.laros.recyclernotes.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ListView;
+import android.view.View;
+import android.widget.TextView;
 
 import com.laros.recyclernotes.R;
 import com.laros.recyclernotes.dao.NoteDAO;
@@ -19,22 +22,34 @@ public class NotesListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes_list);
-        RecyclerView notesList = findViewById(R.id.rc_notes_list);
 
-        NoteDAO dao = new NoteDAO();
-        for (int i = 1; i <= 100; i++) {
-            dao.insert(new Note("First Note" + i,
-                    "First Description" + i));
-            List<Note> allNotes = dao.all();
+        TextView btnInsertNote = findViewById(R.id.tv_notes_list_insert_note);
+        btnInsertNote.setOnClickListener(v -> {
+            Intent initFormNotes = new Intent( NotesListActivity.this, FormNotesActivity.class);
+            startActivity(initFormNotes);
+        });
 
-            notesList.setAdapter(new NotesListAdapter());
-        }
+        List<Note> allNotes = templateNotes();
+        configRecyclerView(allNotes);
     }
 
+    private List<Note> templateNotes() {
+        NoteDAO dao = new NoteDAO();
+        for (int i = 1; i <= 10000; i++) {
+            dao.insert(new Note("First Note" + i,
+                    "First Description" + i));
+        }
+        return dao.all();
+    }
 
+    private void configRecyclerView(List<Note> allNotes) {
+        RecyclerView notesList = findViewById(R.id.rc_notes_list);
+        configAdapter(allNotes, notesList);
+    }
 
-
-
+    private void configAdapter(List<Note> allNotes, RecyclerView notesList) {
+        notesList.setAdapter(new NotesListAdapter(this, allNotes));
+    }
 
 
 }
