@@ -2,4 +2,6 @@
     <string name="app_name">RecyclerNotes</string>
     <string name="insert_note">A coin for your thoughts…</string>
     <string name="save_note">Save Note</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
 </resources>

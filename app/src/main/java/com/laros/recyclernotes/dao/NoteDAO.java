@@ -8,15 +8,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class NoteDAO {
-    private final static ArrayList<Note> notes = new ArrayList <>();
+    private static final ArrayList<Note> notes = new ArrayList <>();
 
     public List<Note> all(){
-
         return (List<Note>) notes.clone();
     }
 
     public void insert(Note... notes) {
-
         NoteDAO.notes.addAll(Arrays.asList(notes));
     }
 

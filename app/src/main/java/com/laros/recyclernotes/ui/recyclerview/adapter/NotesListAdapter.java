@@ -1,6 +1,7 @@
-package com.laros.recyclernotes.ui.adapter;
+package com.laros.recyclernotes.ui.recyclerview.adapter;
 
 import android.content.Context;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,8 @@ import com.laros.recyclernotes.model.Note;
 import java.util.List;
 
 public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.NoteViewHolder> {
-    private List<Note> notes;
-    private Context context;
+    private final List<Note> notes;
+    private final Context context;
 
     public NotesListAdapter(Context context, List<Note> notes) {
         this.context = context;
@@ -25,22 +26,16 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.Note
 
     @NonNull
     @Override
-    public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
+    public NotesListAdapter.NoteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View createdView = LayoutInflater.from(context)
                 .inflate(R.layout.item_note, parent, false);
         return new NoteViewHolder(createdView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
+    public void onBindViewHolder(NotesListAdapter.NoteViewHolder holder, int position) {
         Note note = notes.get(position);
         holder.attach(note);
-    }
-
-    @Override
-    public long getItemId(int i) {
-        return 0;
     }
 
     @Override
@@ -61,9 +56,19 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.Note
         }
 
         public void attach(Note note) {
+            fillFields(note);
+        }
+
+        private void fillFields(Note note) {
             title.setText(note.getTitle());
             description.setText(note.getDescription());
         }
+
+
+    }
+    public void insertNote(Note note) {
+        notes.add(note);
+        notifyDataSetChanged();
     }
 
 

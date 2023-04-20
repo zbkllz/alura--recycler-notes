@@ -2,6 +2,6 @@ package com.laros.recyclernotes.utils;
 
 public interface Constants {
     String NOTE_KEY = "Note";
-    int CREATED_NOTE_CODE_RESULT = 2;
-    int INSERT_NOTE_CODE_REQUEST = 1;
+    int OUTPUT_CODE_CREATED_NOTE = 2;
+    int CODE_REQUEST_INSERT_NOTE = 1;
 }

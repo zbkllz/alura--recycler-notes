@@ -6,20 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.FormNotesActivity">
 
-    <EditText
+    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_form_notes_title"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_margin="20dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/transparent"
-        android:hint="Title"
+        android:hint="@string/title"
         android:textSize="30sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/et_form_notes_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints=""
+        android:inputType="text" />
 
-    <EditText
+    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_form_notes_description"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -27,10 +31,12 @@
         android:layout_marginBottom="8dp"
         android:background="@android:color/transparent"
         android:gravity="top"
-        android:hint="Description"
+        android:hint="@string/description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/et_form_notes_title"
         app:layout_constraintStart_toStartOf="@id/et_form_notes_title"
-        app:layout_constraintTop_toBottomOf="@id/et_form_notes_title" />
+        app:layout_constraintTop_toBottomOf="@id/et_form_notes_title"
+        android:inputType="text"
+        android:autofillHints="" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
